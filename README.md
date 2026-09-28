@@ -10,8 +10,6 @@ Les rapports de banquest utilises sont disponibles sur les sites des banques, ic
 
 ## Etapes du projets
 
-
-
 1. Extraction du texte des pages du rapport (faire attention au mot separe en fin de ligne), nettoyage simple (strip et espace). Pour chaque page, retourner `('id_doc','page','texte')`.
 2.a Tokenisation du texte (sub-word) on visera (~500 tokens) (set chroma).
 2.b Set BM25.
@@ -23,3 +21,34 @@ A voir : utiliser LangChain directement ou ecrire les programmes a la main ?
 6. Ecrire prompt et utiliser LLM (MistralAPI ?)
 
 7. Creation interface avec Streamlit.
+
+
+
+## Organigramme script
+
+```mermaid
+flowchart TD
+    subgraph Ingestion [1. Pretraitement + creation DB]
+        A[Rapports PDF] --> B[Tokeninastion / creation chunk]
+        B --> C[(Chroma DB  Vecteurs)]
+        B --> D[(Index BM25 Mots - nettoyage)]
+    end
+
+    subgraph Recherche [2. Retrieval Hybride]
+        Q[Question Utilisateur] --> C
+        Q --> D
+        C --> F[Fusion hybride RRF + hit5]
+        D --> F
+    end
+
+    subgraph Reponse [3. Reponse]
+        F --> P[Assemblage du prompt]
+        S[Consigne : cite source ou dis 'Je ne sais pas'] --> P
+        P --> LLM[LLM Mistral API]
+        LLM --> R[Reponse]
+    end
+```
+
+
+
+

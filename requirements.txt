@@ -1,4 +1,4 @@
-langchain-community 
-pymupdf
-
 langchain-pymupdf4llm
+pymupdf
+pymupdf4llm
+langchain-core

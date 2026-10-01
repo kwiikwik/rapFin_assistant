@@ -9,6 +9,8 @@ Certains points a ameliorer, surtout au nettoyage
 - certains caractere non identifies (carre blanc) a supprimer
 - tableaux -> meilleur nettoyage serait utiles
 
+- rapport ca mots sont collees (espacement trop petit) -> rends algo bm25 inutile. changer outils d'extraction (pdfplumber) pour choisir tailles espacement ? 
+
 
 ## Chunks 
 - titre de section commencant par ### separee du texte -> rattacher par force debut de section au chunks d'apres

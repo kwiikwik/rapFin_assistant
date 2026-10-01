@@ -4,7 +4,7 @@ import pymupdf
 import pymupdf4llm
 from langchain_core.documents import Document
 import json
-from config import BANQUES
+from src.config import BANQUES
 
 
 def extract(page):
@@ -58,7 +58,7 @@ def load_reports(root_path):
 
 
 def save_pages(liste_docs,path):
-    """Sauvegarde dans fichiers JSON les documents """
+    """Enregistre dans un JSONL une liste_docs composee de Documents sous un format Documents"""
     with path.open('w', encoding="utf-8") as f:
         for doc in liste_docs:
             d = {"page_content": doc.page_content,

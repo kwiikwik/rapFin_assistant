@@ -34,4 +34,38 @@ Certains points a ameliorer, surtout au nettoyage
 - pas de filtre metadata integre -> a ajouter dans BM25Retriever
 
 
+## Eval hit@5
+
+```
+bm25           hit@5=50.0%  MRR=0.41  ratés=['q03', 'q04', 'q07', 'q08', 'q10', 'q11', 'q12', 'q17', 'q18', 'q20', 'q21', 'q23']
+chroma         hit@5=83.3%  MRR=0.64  ratés=['q04', 'q11', 'q12', 'q21']
+hyb 0.5/0.5    hit@5=79.2%  MRR=0.56  ratés=['q04', 'q07', 'q11', 'q12', 'q21']
+hyb 0.3/0.7    hit@5=83.3%  MRR=0.65  ratés=['q04', 'q11', 'q12', 'q21']
+hyb 0.2/0.8    hit@5=83.3%  MRR=0.65  ratés=['q04', 'q11', 'q12', 'q21']
+
+Ratés par tous : [('q04', 'tableau'), ('q11', 'reformulee'), ('q12', 'tableau'), ('q21', 'multilingue')]
+
+```
+- chroma > hybride 0.5/0.5 → bruit BM25
+- 0.3/0.7 = chroma, pas de gain BM25
+- rates communs q04 q11 q12 q21 → chiffres dans tableaux
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

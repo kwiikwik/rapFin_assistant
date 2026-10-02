@@ -11,3 +11,6 @@ langchain-chroma
 rank_bm25
 nltk
 numpy
+
+langchain-groq
+python-dotenv

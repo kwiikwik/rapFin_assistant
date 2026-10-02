@@ -43,7 +43,7 @@ hyb 0.5/0.5    hit@5=79.2%  MRR=0.56  ratés=['q04', 'q07', 'q11', 'q12', 'q21']
 hyb 0.3/0.7    hit@5=83.3%  MRR=0.65  ratés=['q04', 'q11', 'q12', 'q21']
 hyb 0.2/0.8    hit@5=83.3%  MRR=0.65  ratés=['q04', 'q11', 'q12', 'q21']
 
-Ratés par tous : [('q04', 'tableau'), ('q11', 'reformulee'), ('q12', 'tableau'), ('q21', 'multilingue')]
+Rates par tous : [('q04', 'tableau'), ('q11', 'reformulee'), ('q12', 'tableau'), ('q21', 'multilingue')]
 
 ```
 - chroma > hybride 0.5/0.5 → bruit BM25
@@ -51,7 +51,12 @@ Ratés par tous : [('q04', 'tableau'), ('q11', 'reformulee'), ('q12', 'tableau')
 - rates communs q04 q11 q12 q21 → chiffres dans tableaux
 
 
-
+## Generation v0
+- llm premiere essai mistral-api mais offre gratuite indispo
+- LLM openai/gpt-oss-120b (Groq, gratuit (200k/D)), reasoning_effort=low
+- citations 【n】 (carac speciaux) au lieu de [n] → regex accepte les 2
+- UBS AG (14,2 %) vs UBS Group (14,4 %) → mauvaise entité retrouvée (p46) (question : What was UBS's CET1 capital ratio at the end of 2025?)
+- refus hors corpus OK
 
 
 

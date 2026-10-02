@@ -29,7 +29,7 @@ SEPARATORS = ['\n\n', # defaut
 
 EMBED_MODEL = "BAAI/bge-m3"
 
-CHROMA_DIR = DATA / 'index/chroma'
-COLLECTION_NAME = 'report_banques_bgem3'
+CHROMA_DIR = DATA / 'index/chroma_v0'
+COLLECTION_NAME = 'rapport_v0'
 
 

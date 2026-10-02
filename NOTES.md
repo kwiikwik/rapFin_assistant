@@ -1,26 +1,37 @@
 # v0
 
-## Extraction de texte et nettoyages 
+## Extraction de texte et nettoyages
 Certains points a ameliorer, surtout au nettoyage
-- Bannieres chapitres -> a retirer + associer le chap a metadata ( .get_toc marche met pour ca pas inclus)
-- Balises html genre <sup>/ <mark> -> a nettoyer avec regex
-- sommaire -> filtrer et associer ensuite ajouter chapitre/section dans metadata pour reponse + precise ? a lier avec bannieres
-- pages vides a filtrer -> min de mot a associer 
-- certains caractere non identifies (carre blanc) a supprimer
-- tableaux -> meilleur nettoyage serait utiles
+- Bannieres chapitres -> a retirer + associer le chap a metadata (.get_toc marche mais pas inclus)
+- Balises html genre <sup> / <mark> -> a nettoyer avec regex
+- sommaire -> filtrer, puis ajouter chapitre/section dans metadata pour reponse + precise ? a lier avec bannieres
+- pages vides a filtrer -> min de mots
+- certains caracteres non identifies (carre blanc) a supprimer
+- tableaux -> meilleur nettoyage serait utile
+- rapport CA : mots colles (espacement trop petit) -> BM25 aveugle sur ces passages. Changer d'outil d'extraction (pdfplumber) pour regler l'espacement ?
 
-- rapport ca mots sont collees (espacement trop petit) -> rends algo bm25 inutile. changer outils d'extraction (pdfplumber) pour choisir tailles espacement ? 
+## Chunks
+- titre de section (###) separe du texte -> rattacher le titre au chunk d'apres
+- phrases coupees entre pages -> decouper le doc entier en gardant la page de debut
+- certains chunks tres petits (titres seuls, ex. "BILAN ACTIF") -> fusionner avec le chunk suivant
+- tableaux coupes, on perd l'en-tete (annees par ex) -> repeter l'en-tete dans chaque partie
+- tableaux, on perd le contexte -> ajouter la phrase d'intro au chunk ? ne pas couper le tableau (max 8192 tokens, mais pertinence d'un aussi grand vecteur ?)
+    ou metadata 'table_id' : apres la recherche, recuperer tous les chunks du meme table_id, le llm se charge du reste
+- notes de bas de tableau (bnp) -> les associer aux chunks du tableau
 
+## Embeddings / Chroma
+- question reformulee (jargon) -> scores tres serres ("solvabilite" vs "CET1")
+- leger avantage a la meme langue (question FR -> chunk FR un peu mieux note que EN)
+- scores serres entre resultats -> reranking ?
+- questions sur une banque precise -> resultats melanges -> filtre metadata 'banque' (menu dans l'interface ou mots-cles)
+- base sur Google Drive : construire sur disque local Colab, puis zip base cree
 
-## Chunks 
-- titre de section commencant par ### separee du texte -> rattacher par force debut de section au chunks d'apres
-- phrases coupees entre pages -> ???
-- certains chunks tres petits -> a fusionner
-- tableaux sont coupes, on perd l'en tete (annees par ex) -> ajouter l'en tete a la main dans autres parties coupees
-- tableaux on perd le contexte du tableau -> ajouter phrase precedent le tableau au chunks comme avec l'en tete ? ne pas couper le tableau vu que token_max = 8192 (mais pertinence d'un aussi grand vecteur ??) 
-    ou associer metadata 'table_id' aux chunks, mais dans embedding vecto pas de metadata, donc apres reponse verifier si reponse a table_id demander chroma de donner tous les chunks avec cette table_id, llm se chargera du reste.
-- notes de bas de tableau (bnp) -> les associer au chunks correspondants ?
-
+## BM25
+- favorise les chunks qui repetent les mots -> trouve des chunks SUR le sujet, pas ceux qui repondent (certaines page decrivent/introduisent une pbmatique mais n'y repondent pas donc fausse importance d'un token)
+- faux positifs sur mots banals ("niveau" -> Niveau 1/2/3 CA)
+- ne traduit pas : question FR != chunks EN (UBS), sauf sigles communs
+- pas de racinisation en v0 -> tester (attention FR/EN)
+- pas de filtre metadata integre -> a ajouter dans BM25Retriever
 
 
 

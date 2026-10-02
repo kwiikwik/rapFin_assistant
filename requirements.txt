@@ -1,8 +1,13 @@
-langchain-pymupdf4llm
 pymupdf
 pymupdf4llm
 langchain-core
 langchain-text-splitters
+langchain-classic
 
 langchain-huggingface
+sentence-transformers
 langchain-chroma
+
+rank_bm25
+nltk
+numpy

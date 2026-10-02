@@ -1,5 +1,7 @@
 import re
 from langchain_core.messages import SystemMessage, HumanMessage
+from src.config import K_CONTEXT
+
 
 SYSTEM_PROMPT = """Tu es un assistant d'analyse financière. Tu réponds à des questions sur les rapports annuels 2025 de banques, à partir d'extraits numérotés.
 
@@ -54,7 +56,7 @@ def extraire_citations(reponse, docs):
         details.append(detail)
     return details
 
-def answer(question, retriever, llm, k=5) -> dict:
+def answer(question, retriever, llm, k=K_CONTEXT) -> dict:
     docs = retriever.invoke(question)[:k]
     reponse = generate(question, docs, llm)
     ans = {"question": question,

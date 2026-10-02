@@ -33,3 +33,10 @@ CHROMA_DIR = DATA / 'index/chroma_v0'
 COLLECTION_NAME = 'rapport_v0'
 
 
+
+### retrieval / generation
+K_RETRIEVER = 10 #  nbr de docs envoye par bm25 et chroma pour la fusion rrf derriere
+K_CONTEXT = 5    #nbr de docs envoye au llm 
+WEIGHTS_RRF = [0.3, 0.7]          # bm25 / chroma
+LLM_MODEL = "openai/gpt-oss-120b"
+LLM_RPS = 0.05

@@ -1,5 +1,6 @@
 pymupdf
 pymupdf4llm
+chromadb==1.5.9
 langchain-core
 langchain-text-splitters
 langchain-classic
@@ -14,3 +15,4 @@ numpy
 
 langchain-groq
 python-dotenv
+streamlit

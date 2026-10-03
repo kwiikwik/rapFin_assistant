@@ -4,7 +4,8 @@ Posez une question sur les rapports annuels 2025 de **BNP Paribas**, **Crédit A
 
 ![Démo](docs/demo1.gif)
 
-<!-- Démo en ligne : https://... -->
+**Démo en ligne : [rapport-financier-assistant-my.streamlit.app](https://rapport-financier-assistant-my.streamlit.app/)** (si l'app est en veille, cliquer sur le bouton pour la réveiller, ~1-2 min).
+API de Groq gratuite donc peu de recherches par jours, merci de votre comprehension.
 
 Ce projet a pour but de comprendre et de **mesurer** chaque brique d'un système RAG (*Retrieval-Augmented Generation*) : extraction de PDF, découpage en chunks, recherche vectorielle et lexicale, fusion hybride, génération par un LLM, évaluation.
 
@@ -65,7 +66,6 @@ cd rapFin_assistant
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python -c "import nltk; nltk.download('stopwords')"
 ```
 
 Créer un fichier `.env` à la racine avec une clé API Groq (gratuite sur [console.groq.com](https://console.groq.com)) :
@@ -75,6 +75,8 @@ GROQ_API_KEY=...
 ```
 
 ### Données et index
+
+> L'index (chunks et base Chroma) est fourni dans le repo : cette étape peut être sautée. Elle n'est utile que pour ajouter ou modifier des rapports, ou changer les réglages de découpage.
 
 ```bash
 python -m src.ingest

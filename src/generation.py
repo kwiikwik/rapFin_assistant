@@ -18,7 +18,9 @@ USER_TEMPLATE = """Extraits :
 
 {context}
 
-Question : {question}"""
+Question : {question}
+
+Answer in the same language as the question (English question → English answer, question en français → réponse en français)."""
 
 
 def format_context(docs):

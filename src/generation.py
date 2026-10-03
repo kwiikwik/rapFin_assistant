@@ -38,7 +38,7 @@ def generate(question, docs, llm) -> str:
     return ai_msg.content
 
 def extraire_citations(reponse, docs):
-    sources = re.findall(r"[\[【](\d+)[\]】]",reponse)
+    sources = re.findall(r"[\[【](\d+)(?:†[^\]】]*)?[\]】]", reponse)
     details = []
     vus = set()
     for i in map(int,sources):

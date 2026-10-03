@@ -60,7 +60,11 @@ Rates par tous : [('q04', 'tableau'), ('q11', 'reformulee'), ('q12', 'tableau'),
 
 
 
-
+## Éval génération v0
+- 3 « erreurs » = erreurs du jeu d'éval (q07, q18 : plusieurs chiffres valides ; q21 : total groupe vs division) → jeu corrigé, clés alternatives "a|b"
+- erreurs d'entité/périmètre : q10 (entité sociale vs groupe), q16 (cible vs réel, p46), q04 (fixe vs total)
+- q24 : un seul des 2 bancs retrouvé (ambiguë)
+- q17 refus alors que hit@5 OK → à regarder
 
 
 

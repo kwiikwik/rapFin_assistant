@@ -2,8 +2,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / 'data'
 
-
-
+DEVICE="cpu"
+REPORT_URLS = {
+    "bnpparibas_2025.pdf": "https://invest.bnpparibas/document/document-d-enregistrement-universel-et-rapport-financier-annuel-2025-pdf",
+    "ca_2025.pdf": "https://www.credit-agricole.com/pdfPreview/208677",
+    "ubs_2025.pdf": "https://www.ubs.com/content/dam/assets/cc/investor-relations/annual-report/2025/annual-report-ubs-group-2025.pdf",
+}
 
 BANQUES = {
     "bnpparibas" : ('BNP Paribas', 'fr'),

@@ -10,6 +10,11 @@ from langchain_core.documents import Document
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.callbacks import CallbackManagerForRetrieverRun
 
+import nltk
+nltk.download("stopwords", quiet=True)
+
+
+
 def sans_accents(texte):
     """Retire accents d'un texte"""
     texte = unicodedata.normalize("NFKD", texte)

@@ -1,3 +1,6 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+
 pymupdf
 pymupdf4llm
 chromadb==1.5.9

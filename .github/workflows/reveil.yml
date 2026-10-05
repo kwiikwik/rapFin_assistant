@@ -1,0 +1,19 @@
+name: Réveil Streamlit
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # toutes les 6 heures
+  workflow_dispatch:         # permet aussi de le lancer à la main
+
+jobs:
+  reveil:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # récupère le code de ton repo
+      - uses: actions/setup-python@v5      # installe Python
+        with:
+          python-version: "3.12"
+      - run: pip install playwright && playwright install --with-deps chromium
+      - run: python scripts/wake.py
+        env:
+          STREAMLIT_URL: "https://rapport-financier-assistant-my.streamlit.app/"
